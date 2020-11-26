@@ -11,6 +11,7 @@ package aerolinea;
  * @author Felipe
  * //prueba2
  * //prueba3
+ * ayudaaaaaaaaaaaaaaaaaaaaaaaaa
  */
 public class Aerolinea {
 
@@ -19,8 +20,7 @@ public class Aerolinea {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        //ayuda
-        //mami que tu quieres
+        
     }
     
 }
