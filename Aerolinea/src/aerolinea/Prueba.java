@@ -9,7 +9,7 @@ package aerolinea;
  *
  * @author Jaime Leyva
  * //prueba3
- * //felipon
+ * //felipon a
  */
 public class Prueba {
     
