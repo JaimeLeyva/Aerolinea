@@ -9,9 +9,6 @@ package aerolinea;
  *
  * @author Jaime Leyva
  * @author Felipe
- * //prueba2
- * //prueba3
- * ayudaaaaaaaaaaaaaaaaaaaaaaaaa
  */
 public class Aerolinea {
 
