@@ -8,16 +8,8 @@ package aerolinea;
 /**
  *
  * @author Jaime Leyva
- * //Prueba github queonda
- * //prueba2
+ * //prueba3
  */
-public class Aerolinea {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
+public class Prueba {
     
 }
