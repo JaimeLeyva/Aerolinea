@@ -8,7 +8,7 @@ package aerolinea;
 /**
  *
  * @author Jaime Leyva
- * //Prueba github queonda
+ * @author Felipe
  * //prueba2
  * //prueba3
  */
