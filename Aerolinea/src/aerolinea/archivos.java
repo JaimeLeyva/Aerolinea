@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package aerolinea;
+package proyectofc3;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileReader;
+import java.io.InputStreamReader;
 import java.lang.reflect.Array;
 import java.util.Scanner;
 
@@ -71,19 +73,19 @@ public class archivos {
     
     
     public void aeropuertoOrigen(String dia, String buscar){ //NOTA: POR AHORA, ESTE METODO MUESTRA EL AEROPUERTO QUE INDICA CON LA VARIABLE "buscar"
-        buscar = "A.I ANGEL ALBINO CORZO"; //esta variable es la que regresa el metodo "seleccionaAeropuerto"
+        //buscar = "A.I ANGEL ALBINO CORZO"; //esta variable es la que regresa el metodo "seleccionaAeropuerto"
         //"aeropuertoOrigen" hace lo mismo que "aeropuertoDestino" por eso aun no actualizo el metodo
         System.out.println("");
         System.out.println("");
         
         try{
-            
+                        
             FileReader fr = new FileReader("\\Users\\Usuario\\Documents\\NetBeansProjects\\proyectoFC3\\listas\\" + dia +".txt");
             BufferedReader br = new BufferedReader(fr); //creamos el objeto "br" que lee el documento
             String cadena= "";        
             int limiteDocumento = (int) cadena.lines().count(); 
             //int limite = (int) br.lines().count(); // cuenta las lineas pero por alguna razón que no entiendo, causa conflicto con "limiteDocumento", asi que ignorenlo
-            
+                       
             System.out.println("¿En que aeropuerto te gustaria tomar tu avion?");                                
             
             /*
@@ -93,24 +95,27 @@ public class archivos {
             incluso si estas estan separadas por otras lineas diferentes.
             */
             for (int i = 0; i <= limiteDocumento; i--) {
+                
                 cadena = br.readLine();
+                
                 if (cadena.equals(null)) { //si marca "null", detiene el ciclo
+                   
+                    System.out.println("Estos son los vuelos disponibles.");
+                    System.out.println("");
+                    System.out.println("Sino aparece el aeropuerto que te interesa");
+                    System.out.println("buscalo en otro dia.");
                     break;
+                
                 }else{
                     if (cadena.startsWith(buscar)) { //si la linea empieza con "buscar"
                         //entonces imprimela
-                        System.out.println(cadena);                      
-                        
+                        System.out.println(cadena);                                             
                     }
+                        
                 }                                                
             }
-            
-            
-            System.out.println("Estos son los vuelos disponibles.");
-            System.out.println("");
-            System.out.println("Sino aparece el aeropuerto que te interesa");
-            System.out.println("buscalo en otro dia.");
-            
+
+           
         }catch(Exception ex){
            
            
@@ -189,7 +194,7 @@ public class archivos {
     }
     
     
-    public String seleccionaAeropuerto(int resp){ //Este metoddo no esta completo
+    public String seleccionaAeropuerto(int resp){ //Este metodo esta completo
         //el chiste es que tome la opcion del usuario y guarde esa opcion y con eso le indique
         //al metodo "aeropuertoDestino" y "aeropuertoOrigen" que aeropuertos deben imprimir
         String aeropuerto = "";
@@ -201,32 +206,34 @@ public class archivos {
             FileReader fr = new FileReader("\\Users\\Usuario\\Documents\\NetBeansProjects\\proyectoFC3\\listas\\AeropuertoOrigenLista.txt");
             BufferedReader br = new BufferedReader(fr);           
             int limiteDocumento = (int) cadenaGlobal.lines().count();
-            int opcion;
+            String opcion;
             String cadena = "";
-            
-            String opciones[] = {};
-            //String lel = "lel";
-            //opciones[1] = lel;
-            //System.out.println(opciones[1]);
+            int indice = 0;
             
             System.out.println("***************************");
             System.out.println("******* Aeropuertos *******");
             System.out.println("***************************");
             System.out.println("Estos son todos los aeropuertos:");
+            System.out.println("-------------------------");
             
             do{
                 
             for (int i = a; i <= b; i++) {
+                
+                indice++;
                 cadenaGlobal = br.readLine();
-                opciones[a] = br.readLine();
-                System.out.println(i + ": " + cadenaGlobal);
-                limiteDocumento--;                
+                System.out.println(indice + ": " + cadenaGlobal);
+                limiteDocumento--;                    
+                
             }
             
-            System.out.println("Elija el que desee escribiendo el número del aeropuerto:");
-            System.out.println("0. Ver mas.");
+            System.out.println("-------------------------");
+            System.out.println("0. Ver mas.");            
+            System.out.println("Por favor copia el nombre del aeropuerto que desees");
+            System.out.println("y colocalo abajo:");
+            
             Scanner sc = new Scanner(System.in);
-            opcion = sc.nextInt();
+            opcion = sc.nextLine();
             
             a = a + 6;
             b = b + 6;
@@ -234,26 +241,22 @@ public class archivos {
             System.out.println("");
             System.out.println("-------------------------");
             
-            }while((cadenaGlobal != "")&&(opcion == 0));
             
-            
-            
-            
-            switch(opcion){
-            
-                case 1:       
-                    aeropuerto = opciones[opcion];                 
-                    break;
+            if (opcion.startsWith("0")) {
+                //Sale del "if", hace la vuelta y muestra los siguientes aeropuertos
+            }else{                
                 
-                case 2:
-                    aeropuerto = opciones[opcion]; 
-                    break;
+                aeropuerto = opcion;
+                break;
+                                               
             }
-        
-        
-            }catch(Exception ex){
             
-            }
+            }while((cadenaGlobal != "") && (opcion.startsWith("0")));
+            
+        
+        }catch(Exception ex){
+            
+        }
         
         return aeropuerto;
     
@@ -263,7 +266,10 @@ public class archivos {
     public String verDia(int modo){
         
         String dia = ""; //esta variable contendrá el dia seleccionado por los usuarios
-        String tipo = "";
+        String tipo = ""; //la variable indica si será "Destino" u "Origen" en las rutas de los archivos
+        
+        System.out.println("");
+        System.out.println("");
         System.out.println("***********************************");
         System.out.println("******* Vuelos de la semana *******");
         System.out.println("***********************************");
@@ -343,29 +349,5 @@ public class archivos {
         return dia;
     }
     
-    
-    /*
-                if ((br.readLine().equalsIgnoreCase(prueba)) != false) {
-                    
-                    System.out.println(contador);
-                    cadena = br.readLine();
-                    contador = limiteDocumento;
-                    
-                }
-                */
-                //cadena = br.readLine();
-                
-                /*
-                if ((cadena.startsWith(prueba)) || (buscar != true)) {
-                
-                System.out.println(cadena);
-                buscar = false;
-                
-                }else{
-                    //buscar = false;
-                    System.out.println("Nada...");
-                    //break;
-                }
-                */
                 
 }
