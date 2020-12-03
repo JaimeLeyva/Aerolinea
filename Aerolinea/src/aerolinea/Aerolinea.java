@@ -50,7 +50,7 @@ public class Aerolinea {
             case 2: //origen
                 System.out.println("Escoja el dia para ver los "
                         + "aeropuertos con vuelos disponibles:");
-                opcion = a.verDia(respuesta);
+                opcion = a.verDia(respuesta); //2
                 System.out.println("");
                 System.out.println("");
                 aeropuerto = a.seleccionaAeropuerto(respuesta); 

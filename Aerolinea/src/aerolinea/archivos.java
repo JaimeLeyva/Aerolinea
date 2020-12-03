@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package aerolinea;
+package Aerolinea;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -77,16 +77,25 @@ public class archivos {
         //"aeropuertoOrigen" hace lo mismo que "aeropuertoDestino" por eso aun no actualizo el metodo
         System.out.println("");
         System.out.println("");
+        String a = "";
         
         try{
                         
-            FileReader fr = new FileReader("\\Users\\Usuario\\Documents\\NetBeansProjects\\proyectoFC3\\listas\\" + dia +".txt");
+            FileReader fr = new FileReader("\\Users\\Usuario\\Documents\\NetBeansProjects\\proyectoFC3\\listas\\" + dia + "-AeropuertoOrigen.txt");
             BufferedReader br = new BufferedReader(fr); //creamos el objeto "br" que lee el documento
             String cadena= "";        
             int limiteDocumento = (int) cadena.lines().count(); 
-            //int limite = (int) br.lines().count(); // cuenta las lineas pero por alguna razón que no entiendo, causa conflicto con "limiteDocumento", asi que ignorenlo
+            //int limite = (int) cadena.lines().count(); // cuenta las lineas pero por alguna razón que no entiendo, causa conflicto con "limiteDocumento", asi que ignorenlo
                        
             System.out.println("¿En que aeropuerto te gustaria tomar tu avion?");                                
+            
+            FileReader fr2 = new FileReader("\\Users\\Usuario\\Documents\\NetBeansProjects\\proyectoFC3\\listas\\" + dia +"-AeropuertoDestino.txt");
+            BufferedReader br2 = new BufferedReader(fr2);
+            String cadena2 = "";
+            
+            FileReader fr3 = new FileReader("\\Users\\Usuario\\Documents\\NetBeansProjects\\proyectoFC3\\listas\\" + dia +"-Tiempo-viaje.txt");
+            BufferedReader br3 = new BufferedReader(fr3);
+            String cadena3 = "";
             
             /*
             el metodo de busqueda ha "mejorado", ahora con el "for" lee las lineas 
@@ -94,9 +103,12 @@ public class archivos {
             archivo y si encuentra una linea igual a "buscar", imprime esa linea,
             incluso si estas estan separadas por otras lineas diferentes.
             */
+            System.out.println("Aeropuerto Salida:      Aeropuerto Destino:       Tiempo de vuelo:");
             for (int i = 0; i <= limiteDocumento; i--) {
                 
                 cadena = br.readLine();
+                cadena2 = br2.readLine();
+                cadena3 = br3.readLine();
                 
                 if (cadena.equals(null)) { //si marca "null", detiene el ciclo
                    
@@ -109,7 +121,8 @@ public class archivos {
                 }else{
                     if (cadena.startsWith(buscar)) { //si la linea empieza con "buscar"
                         //entonces imprimela
-                        System.out.println(cadena);                                             
+                        
+                        System.out.println(cadena + ": " + cadena2 + " -- " + cadena3);                                             
                     }
                         
                 }                                                
@@ -194,9 +207,7 @@ public class archivos {
     }
     
     
-    public String seleccionaAeropuerto(int resp){ //NOTA:El metodo tiene problemas de codificacion y no guarda los acentos
-        //NOTA2:Al no poder guardar acentos, ocasiona conflictos con las futuras busquedas, intenten repararlo
-        
+    public String seleccionaAeropuerto(int resp){ //Este metodo esta completo
         //el chiste es que tome la opcion del usuario y guarde esa opcion y con eso le indique
         //al metodo "aeropuertoDestino" y "aeropuertoOrigen" que aeropuertos deben imprimir
         String aeropuerto = "";
@@ -268,6 +279,7 @@ public class archivos {
     public String verDia(int modo){
         
         String dia = ""; //esta variable contendrá el dia seleccionado por los usuarios
+        String dia2= "";
         String tipo = ""; //la variable indica si será "Destino" u "Origen" en las rutas de los archivos
         
         System.out.println("");
@@ -313,34 +325,36 @@ public class archivos {
                     break; 
                     
                 case 1:
-                    dia = "Lunes" + tipo;
+                    dia = "Lunes";
+                    dia2 = "";
                     break;
                     
                 case 2:
-                    dia = "Martes" + tipo;
+                    dia = "Martes";
                     break;
                 
                 case 3:
-                    dia = "Miercoles" + tipo;
+                    dia = "Miercoles";
                     break;
                 
                 case 4:
-                    dia = "Jueves" + tipo;
+                    dia = "Jueves";
                     break; 
                 
                 case 5:
-                    dia = "Viernes" + tipo;
+                    dia = "Viernes";
                     break;
                 
                 case 6:
-                    dia = "Sabado" + tipo;
+                    dia = "Sabado";
                     break;
                 
                 case 7:
-                    dia = "Domingo" + tipo;
+                    dia = "Domingo";
                     break;    
                 
                 default:
+                    
                     System.out.println("Por favor, elija las opciones que se muestran.");
                     break;
             }
