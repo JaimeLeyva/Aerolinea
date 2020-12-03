@@ -36,28 +36,23 @@ public class archivos {
         System.out.println("******* Bienvenidos *******");
         System.out.println("***************************");
         System.out.println("Elija la opcion que le interese:");
-        System.out.println("1. ¿Hacia donde quieres ir? Selecciona un aeropuerto."); //Destino
-        System.out.println("2. Consultar el aeropuerto de salida."); //Origen
-        System.out.println("3. Salir");
+        System.out.println("1. Consultar el aeropuerto de salida."); //Origen
+        System.out.println("2. Salir");
         Scanner sc = new Scanner(System.in);
         int opcion = sc.nextInt();
         
         System.out.println("");
         System.out.println("");
         
-        if ((opcion != 0) || (opcion <= 3)) {
+        if ((opcion != 0) || (opcion <= 2)) {
             
             switch(opcion){
                 
                 case 1:
                     respuesta = 1;
-                    break;
+                    break;              
                 
                 case 2:
-                    respuesta = 2;
-                    break;
-                
-                case 3:
                     System.exit(0);
                     break;
                 
@@ -103,7 +98,7 @@ public class archivos {
             archivo y si encuentra una linea igual a "buscar", imprime esa linea,
             incluso si estas estan separadas por otras lineas diferentes.
             */
-            System.out.println("Aeropuerto Salida:      Aeropuerto Destino:       Tiempo de vuelo:");
+            System.out.println("Aeropuerto Salida:      Aeropuerto Destino:           Tiempo de vuelo:");
             for (int i = 0; i <= limiteDocumento; i--) {
                 
                 cadena = br.readLine();
@@ -139,73 +134,7 @@ public class archivos {
         
         
     }
-    
-    
-    public void aeropuertoDestino(String dia){
-        /*
-        Este metodo recibe una cadena "dia", "dia" se agrega a la ruta en donde
-        se busca un documento dependiendo del dia valga la redundancia
-        */
-        System.out.println("");
-        System.out.println("");
-        
-        try{
-            
-            //en la fila de abajo es donde hacemos lo de la ruta
-            FileReader fr = new FileReader("\\Users\\Usuario\\Documents\\NetBeansProjects\\proyectoFC3\\listas\\" + dia +".txt");
-            BufferedReader br = new BufferedReader(fr); //creamos el objeto que nos servira para leer el .txt
-            String cadena= ""; //cadena se encargara de leer las lineas del documento 
-            int limiteDocumento = (int) cadena.lines().count(); //cuenta el numero de lineas que tiene el .txt
-            
-            System.out.println("¿Hacia donde quieres viajar?");
-            System.out.println("Estos son los aeropuertos disponibles a donde puedes ir:");
-            System.out.println("");
-            
-            
-            for (int i = 0; i <= 2; i++) {
-                cadena = br.readLine();
-                System.out.println(cadena);
-                limiteDocumento--;
-            }
-            
-            limiteDocumento = (int) cadena.lines().count();
-            System.out.println("++++++++++++++++++++++");
-            /*
-            El "for" inicia en 0 y mientras sea menor o igual que el limiteDocumento,
-            cuando inicia el "for", "cadena" lee la linea y después comprueba si hay 
-            contenido dentro de la linea, sino detiene el "for". Si el "if" no se 
-            cumple entonces imprime la linea que contiene "cadena".            
-            */
-            for (int i = 0; i <= limiteDocumento; i--) {
-                cadena = br.readLine();
-                if (cadena.equals(null)) {
-                    break;
-                }
-                
-                System.out.println(cadena);
-                
-            }
-            
-        }catch(Exception ex){
-           /*
-           Si mal no recuerdo, aqui hay un problema por que siempre manda los mensajes 
-           independientemente de si el "try" se ejecuta correctamente.
-           */
-           
-           //System.out.println("Hubo un problema buscando la ubicacion de tu aeropuerto.");
-           //System.out.println("Intenta cargar la aplicacion de nuevo");
-            
-        }
-        
-        System.out.println("");
-        System.out.println("");
-    }
-    
-    
-    public void tiempoViaje(){
-        
-    }
-    
+      
     
     public String seleccionaAeropuerto(int resp){ //Este metodo esta completo
         //el chiste es que tome la opcion del usuario y guarde esa opcion y con eso le indique

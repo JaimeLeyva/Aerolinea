@@ -37,17 +37,8 @@ public class Aerolinea {
         respuesta = a.menu();
         
         switch(respuesta){
-            
-            case 1: //destino
-                System.out.println("Escoja el dia con los vuelos "
-                        + "disponibles hacia un destino:");
-                opcion = a.verDia(respuesta);
-                System.out.println("");
-                System.out.println("");
-                a.aeropuertoDestino(opcion);
-                break;
-            
-            case 2: //origen
+                   
+            case 1: //origen
                 System.out.println("Escoja el dia para ver los "
                         + "aeropuertos con vuelos disponibles:");
                 opcion = a.verDia(respuesta); //2
