@@ -21,8 +21,6 @@ public class Aerolinea {
     
     public static void main(String[] args) {
         // TODO code application logic here
-        //aqui mandaremos los metodos, pero deben ir ordenados
-        //por ahora solo lo uso para probar los metodos
         
         System.out.println("Aerolinea ISI:");
         int respuesta = 0;
@@ -31,9 +29,6 @@ public class Aerolinea {
         
         archivos a = new archivos();
         
-        //aeropuerto = a.seleccionaAeropuerto(respuesta); 
-        //System.out.println("");
-        //System.out.println("");
         respuesta = a.menu();
         
         switch(respuesta){

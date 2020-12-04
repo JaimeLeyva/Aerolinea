@@ -75,8 +75,8 @@ public class archivos {
         String a = "";
         
         try{
-                        
-            FileReader fr = new FileReader("\\Users\\Usuario\\Documents\\NetBeansProjects\\proyectoFC3\\listas\\" + dia + "-AeropuertoOrigen.txt");
+                        //C:\Users\Usuario\Documents\NetBeansProjects\Aerolinea\Aerolinea
+            FileReader fr = new FileReader("\\Users\\Usuario\\Documents\\NetBeansProjects\\Aerolinea\\Aerolinea\\listas\\" + dia + "-AeropuertoOrigen.txt");
             BufferedReader br = new BufferedReader(fr); //creamos el objeto "br" que lee el documento
             String cadena= "";        
             int limiteDocumento = (int) cadena.lines().count(); 
@@ -84,11 +84,11 @@ public class archivos {
                        
             System.out.println("¿En que aeropuerto te gustaria tomar tu avion?");                                
             
-            FileReader fr2 = new FileReader("\\Users\\Usuario\\Documents\\NetBeansProjects\\proyectoFC3\\listas\\" + dia +"-AeropuertoDestino.txt");
+            FileReader fr2 = new FileReader("\\Users\\Usuario\\Documents\\NetBeansProjects\\Aerolinea\\Aerolinea\\listas\\" + dia +"-AeropuertoDestino.txt");
             BufferedReader br2 = new BufferedReader(fr2);
             String cadena2 = "";
             
-            FileReader fr3 = new FileReader("\\Users\\Usuario\\Documents\\NetBeansProjects\\proyectoFC3\\listas\\" + dia +"-Tiempo-viaje.txt");
+            FileReader fr3 = new FileReader("\\Users\\Usuario\\Documents\\NetBeansProjects\\Aerolinea\\Aerolinea\\listas\\" + dia +"-Tiempo-viaje.txt");
             BufferedReader br3 = new BufferedReader(fr3);
             String cadena3 = "";
             
@@ -145,7 +145,7 @@ public class archivos {
         try{
             
             cadenaGlobal = cadenaGlobal + b;
-            FileReader fr = new FileReader("\\Users\\Usuario\\Documents\\NetBeansProjects\\proyectoFC3\\listas\\AeropuertoOrigenLista.txt");
+            FileReader fr = new FileReader("\\Users\\Usuario\\Documents\\NetBeansProjects\\Aerolinea\\Aerolinea\\listas\\AeropuertoOrigenLista.txt");
             BufferedReader br = new BufferedReader(fr);           
             int limiteDocumento = (int) cadenaGlobal.lines().count();
             String opcion;
